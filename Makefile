@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 15:06:11 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/02/24 16:40:17 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/02/24 18:16:29 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 DIR_LIBS = library
-MLX_DIR = library/minilibx-linux
+MLX_DIR = library/minilibx-linux/
 LIB_DIR = $(DIR_LIBS)/libft
 SRC_DIR = src
 INC_DIR = includes
@@ -32,21 +32,24 @@ SRCS =	$(SRC_DIR)/main.c \
 	
 OBJS = $(SRCS:.c=.o)
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) $(MLX_DIR)/libmlx.a $(NAME)
 
 $(LIBFT):
 	@make -C $(LIB_DIR)
+
+$(MLX_DIR)/libmlx.a:
+	@make -C $(MLX_DIR)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MLX_LIB) $(LIBFT_LIB) -o $(NAME)
 	@echo "FDF compilate sucess"
 
 %.o: %.c 
-	$(CC) $(FCLAGS) -I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIB_DIR) -I$(MLX_DIR) -c $< -o $@
 	@echo "compiling"
 
 clean:
-	@rm -f $(OBJD)
+	@rm -f $(OBJS)
 	@make -C $(LIB_DIR) clean
 	@echo "finish clearning"
 
