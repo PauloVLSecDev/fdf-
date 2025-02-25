@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:49:20 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/01/06 19:41:38 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/02/25 15:25:17 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ FILE = ft_isalpha.c \
 	ft_striteri.c \
 	ft_hexa.c \
 	ft_put_unsi.c \
-	ft_printf.c 
+	ft_printf.c \
+	get_next_line.c 
 
 OBJS = $(FILE:.c=.o)
 
@@ -72,4 +73,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+PHONY: all clean fclean re

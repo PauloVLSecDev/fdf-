@@ -6,17 +6,20 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:20:07 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/01/03 20:07:50 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:18:39 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+# ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+#endif
 
-# include <stdlib.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <fcntl.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -52,6 +55,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	**ft_split(char const *s, char c);
+char	*get_next_line(int fd);
 int		ft_printf(const char *format, ...);
 int		putnbr(int n);
 int		ft_put_unsi(unsigned int n);
