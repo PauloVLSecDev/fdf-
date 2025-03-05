@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/05 20:41:07 by pvitor-l         ###   ########.fr       */
+/*   Created: 2025/02/27 14:57:48 by pvitor-l          #+#    #+#             */
+/*   Updated: 2025/03/05 20:09:39 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,17 @@ int **read_map(char *file, t_fdf *map)
 	int		fd;
 	char		*line;
 
-	map->rows = count_lines(file);
-	if (map->rows <= 0)
-		return (NULL);
-	map->maps = malloc(sizeof(int *) * (map->rows + 1));
-	if (!map->maps)
-		return (NULL);
+	printf("tentando abrir aquivo");
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		free(map->maps);
 		return (NULL);
-	}
+	printf("arquivo aberto com sucesso");
 	i = 0;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		map->maps[i++] = convert_line_to_int(line, map);
+		map->maps = malloc(sizeof(t_fdf * (count_cols(line) + 1)));
+		map->maps[map->rows] = convert_line_to_int(line, map);
+		map->rows++;
 		printf("%d", map->rows);
 		printf("%s", line);
 		free(line);
@@ -41,24 +36,7 @@ int **read_map(char *file, t_fdf *map)
 	close(fd);
 	return (map->maps);
 }
-int	count_lines(char *file)
-{
-	int	fd;
-	int	rows;
-	char	*line;
 
-	rows = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		rows++;
-		free(line);
-	}
-	close (fd);
-	return (rows);
-}
 int	count_cols(char *line)
 {
 	int i;
@@ -71,10 +49,7 @@ int	count_cols(char *line)
 	if (!split_line)
 		return (0);
 	while (split_line[i])
-	{
 		cols++;
-		i++;
-	}
 	free_array(split_line);
 	return (cols);
 }

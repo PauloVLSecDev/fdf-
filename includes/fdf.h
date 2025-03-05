@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/05 17:40:27 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/05 20:41:52 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,6 @@ void	init_window(t_fdf *fdf);
 t_fdf	*init_fdf(char *file);
 void	init_map(t_fdf *map);
 int	*convert_line_to_int(char *line, t_fdf *map);
+int	count_cols(char *line);
+int	count_lines(char *file);
 #endif

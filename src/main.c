@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/05 18:21:41 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:47:08 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void init_window(t_fdf *fdf)
 	}
 	mlx_key_hook(fdf->win, close_window_ESC, NULL);
 	mlx_hook(fdf->win, 17, 0, close_window_X, NULL);
-	mlx_loop(fdf->mlx);
 	return ;
 }
 
@@ -100,5 +99,6 @@ int 	main (int argc, char **argv)
 	printf("%d\n", fdf->zoom);
 	printf("%d\n", fdf->shift_x);
 	printf("%d\n", fdf->cols);
+	mlx_loop(fdf->mlx);
 	return (0);
 }
