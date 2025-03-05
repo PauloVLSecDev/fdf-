@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:20:07 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/02/25 15:18:39 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:27:10 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	*ft_memmove(void *dest, void *str, size_t len);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	free_array(char **matrix);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);

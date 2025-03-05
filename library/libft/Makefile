@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/21 14:49:20 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/02/25 15:25:17 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/03/05 16:27:47 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ FILE = ft_isalpha.c \
 	ft_hexa.c \
 	ft_put_unsi.c \
 	ft_printf.c \
+	free_array.c \
 	get_next_line.c 
 
 OBJS = $(FILE:.c=.o)
