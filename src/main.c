@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/05 19:47:08 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:15:00 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ t_fdf *init_fdf(char *file)
 		free(fdf);
 		exit(1);
 	}
-	fdf->maps = read_map(file, fdf);
 	init_map(fdf);
+	fdf->maps = read_map(file, fdf);
 	init_window(fdf);
 	return (fdf);
 }
@@ -96,9 +96,6 @@ int 	main (int argc, char **argv)
 	t_fdf *fdf;
 	check_args(argc, argv);
 	fdf = init_fdf(argv[1]);
-	printf("%d\n", fdf->zoom);
-	printf("%d\n", fdf->shift_x);
-	printf("%d\n", fdf->cols);
 	mlx_loop(fdf->mlx);
 	return (0);
 }
