@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/13 17:06:36 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:21:42 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int **read_map(char *file, t_fdf *map)
 	line = get_next_line(fd);
 	map->cols = count_cols(line);
 	free(line);
+	close(fd);
+	fd = open(file, O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		map->maps[i] = convert_line_to_int(line, map);
