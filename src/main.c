@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/13 16:15:00 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/14 20:08:44 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,20 @@ void	init_map(t_fdf *map)
 void init_window(t_fdf *fdf)
 {
 	
-	fdf->mlx = mlx_init();
-	if (!fdf->mlx)
+	fdf->mlx_ptr = mlx_init();
+	if (!fdf->mlx_ptr)
 	{
-		free(fdf->mlx);
+		free(fdf->mlx_ptr);
 		exit(1);
 	}
-	fdf->win = mlx_new_window(fdf->mlx, WIDTH, HEIGHT, "FDF");
+	fdf->win = mlx_new_window(fdf->mlx_ptr, WIDTH, HEIGHT, "FDF");
 	if (!fdf->win)
 	{
 		free(fdf->win);
 		exit(1);
 	}
-	mlx_key_hook(fdf->win, close_window_ESC, NULL);
-	mlx_hook(fdf->win, 17, 0, close_window_X, NULL);
+	mlx_key_hook(fdf->win, close_window_ESC, fdf);
+	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	return ;
 }
 
@@ -96,6 +96,6 @@ int 	main (int argc, char **argv)
 	t_fdf *fdf;
 	check_args(argc, argv);
 	fdf = init_fdf(argv[1]);
-	mlx_loop(fdf->mlx);
+	mlx_loop(fdf->mlx_ptr);
 	return (0);
 }

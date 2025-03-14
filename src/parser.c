@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/13 17:21:42 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:36:21 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,13 @@ int **read_map(char *file, t_fdf *map)
 		return (NULL);
 	}
 	i = 0;
-	line = get_next_line(fd);
-	map->cols = count_cols(line);
-	free(line);
-	close(fd);
-	fd = open(file, O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		map->maps[i] = convert_line_to_int(line, map);
 		i++;
 		free(line);
 	}
-	print_map(map);
+	//	print_map(map);
 	close(fd);
 	return (map->maps);
 }
@@ -56,12 +51,10 @@ int	count_lines(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	line = get_next_line(fd);
-	while (line != NULL)
+	while ((line = get_next_line(fd)) != NULL)
 	{
 		rows++;
 		free(line);
-		line = get_next_line(fd);
 	}
 	close (fd);
 	return (rows);
@@ -88,21 +81,17 @@ int	count_cols(char *line)
 
 int	*convert_line_to_int(char *line, t_fdf *map)
 {
-	int		cols;
 	int		i;
 	int		*number;
 	char		**split_line;
 
-	cols = 0;
 	split_line = ft_split(line, ' ');
 	if (!split_line)
 		return (NULL);
-	while (split_line[cols])
-		cols++;
-	map->cols = cols;
-	number = malloc(sizeof(int) * cols);
+	map->cols = count_cols(line);
+	number = malloc(sizeof(int) * map->cols);
 	i = 0;
-	while (i < cols)
+	while (i < map->cols)
 	{
 		number[i] = ft_atoi(split_line[i]);
 		i++;

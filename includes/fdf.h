@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/13 16:53:54 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/14 19:20:57 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 typedef struct s_fdf
 {
-	void *mlx;
+	void *mlx_ptr;
 	void *win;
 	void *img;
 
@@ -46,8 +46,8 @@ typedef struct s_fdf
 
 } t_fdf;
 
-int	close_window_ESC(int keycode, void *param);
-int	close_window_X(void *param);
+int	close_window_ESC(int keycode, t_fdf *fdf);
+int	close_window_X(t_fdf *fdf);
 int	**read_map(char *file, t_fdf *map);
 void	init_window(t_fdf *fdf);
 t_fdf	*init_fdf(char *file);
@@ -56,4 +56,7 @@ int	*convert_line_to_int(char *line, t_fdf *map);
 int	count_cols(char *line);
 int	count_lines(char *file);
 void	print_map(t_fdf *map);
+void	free_map(int **map, int lines);
+void	close_fdf(t_fdf *fdf);
+
 #endif

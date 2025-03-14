@@ -6,23 +6,22 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 17:23:51 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/02/25 18:11:49 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/14 19:55:40 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	close_window_ESC(int keycode, void *param)
+int	close_window_ESC(int keycode, t_fdf *fdf)
 {
-	(void)param;
 	if (keycode == ESC)
-		exit(0);
+		close_fdf(fdf);
 	return (0);
 }
 
-int	close_window_X(void *param)
+int	close_window_X(t_fdf *fdf)
 {
-	(void)param;
-	exit(0);
+	close_fdf(fdf);
+	return (0);
 }
 

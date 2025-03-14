@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/14 20:11:39 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/14 20:10:54 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	close_fdf(t_fdf *fdf)
 			mlx_destroy_window(fdf->mlx_ptr, fdf->win);
 		mlx_destroy_display(fdf->mlx_ptr);
 		free(fdf->mlx_ptr);
+		fdf->mlx_ptr = NULL;
+		fdf->win = NULL;
 	}
 	free(fdf);
 	exit(0);
