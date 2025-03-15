@@ -6,27 +6,11 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/14 20:08:44 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/15 15:42:39 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-/*
-int **parse_map(char *map, int width, int height)
-{
-	int fd;
-	int i;
-	char **storege_line;
-
-	i = 0;
-	fd = open(map, O_RDONLY);
-	while (storege[i] = get_next_line(fd) != NULL)
-	{
-		i++;		
-	}
-}
-*/
 
 t_fdf *init_fdf(char *file)
 {
@@ -95,6 +79,7 @@ int 	main (int argc, char **argv)
 {
 	t_fdf *fdf;
 	check_args(argc, argv);
+	validade_map(argv[1]);
 	fdf = init_fdf(argv[1]);
 	mlx_loop(fdf->mlx_ptr);
 	return (0);

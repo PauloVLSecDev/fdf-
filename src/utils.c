@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/14 20:11:39 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:05:14 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,21 @@ void	free_map(int **map, int lines)
 		free(map[i++]);
 	free(map);
 }
+void	validade_map(char *map)
+{
+	int	i;	
+	int	diff;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	i = 0;
+	if (map == NULL || *map == '\0')
+		exit(1);
+	while (map[i] != '.')
+		i++;
+	diff = ft_strncmp(&map[i], ".fdf", ft_strlen(".fdf"));
+	if (diff != 0)
+	{
+		perror("map whitout .fdf in end");
+		exit(1);
+	}
+	return ;
+}

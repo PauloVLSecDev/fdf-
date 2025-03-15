@@ -6,15 +6,15 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/14 19:20:57 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:02:44 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 #define FDF_H 
 
-# define WIDTH  800
-# define HEIGHT  600
+# define WIDTH  1000
+# define HEIGHT  800
 # define ESC 0xff1b
 
 #include "../library/libft/libft.h"
@@ -58,5 +58,6 @@ int	count_lines(char *file);
 void	print_map(t_fdf *map);
 void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
+void	validade_map(char *map);
 
 #endif
