@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/15 15:42:39 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:51:57 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int 	main (int argc, char **argv)
 {
 	t_fdf *fdf;
 	check_args(argc, argv);
-	validade_map(argv[1]);
+	validade_all(argv[1]);
 	fdf = init_fdf(argv[1]);
 	mlx_loop(fdf->mlx_ptr);
 	return (0);
