@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/15 19:25:21 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:03:00 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	count_lines(char *file)
 		return (0);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		rows++;
 		free(line);
+		rows++;
 	}
 	close (fd);
 	return (rows);
