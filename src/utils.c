@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/15 20:53:34 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/16 15:57:27 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,31 +72,35 @@ static void	validade_file_name(char *file_name)
 	return ;
 }
 
-static int validade_cols_of_lines(int fd, char *file)
+static int validade_cols_of_lines(int fd)
 {
 	char	*line;
+	int	cols_first_line;
 	int	cols;
-	int	flag = 0;
 	
 	line = get_next_line(fd);
-	cols = count_cols(line);
+	if (!line)
+	{
+		free(line);
+		return (1);
+	}
+	cols_first_line = count_cols(line);	
+	printf("%s", line);
 	free(line);
-	close(fd);
-	fd = open(file, O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
-	{	
-		if (cols != count_cols(line))
+	{
+		cols = count_cols(line);
+		if (cols_first_line != cols)
 		{
 			free(line);
 			close(fd);
-			flag = 1;
-			return (flag);
+			return (1);
 		}
+		printf("%s", line);
 		free(line);
 	}
-	free(line);
 	close(fd);
-	return (flag);
+	return (0);
 }
 
 
@@ -112,7 +116,7 @@ void	validade_all(char *file)
 		exit(1);
 	}
 	validade_file_name(file);
-	flag = validade_cols_of_lines(fd, file);
+	flag = validade_cols_of_lines(fd);
 	if (flag == 1)
 	{
 		close(fd);
