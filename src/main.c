@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/18 15:32:55 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:49:04 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 t_fdf *init_fdf(char *file)
 {
-	t_fdf *fdf;
+	t_fdf	*fdf;
 
-	printf("nome do arquivo %s\n", file);
 	fdf = malloc(sizeof(t_fdf));
 	if (fdf == NULL)
 	{
@@ -45,23 +44,13 @@ void	init_map(t_fdf *map)
 
 void init_window(t_fdf *fdf)
 {
-	
-	t_img	img;
 	fdf->mlx_ptr = mlx_init();
 	if (!fdf->mlx_ptr)
-	{
-		free(fdf->mlx_ptr);
 		exit(1);
-	}
 	fdf->win = mlx_new_window(fdf->mlx_ptr, WIDTH, HEIGHT, "FDF");
 	if (!fdf->win)
-	{
-		free(fdf->win);
 		exit(1);
-	}
-	img.img = mlx_new_image(fdf->mlx_ptr, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img,img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	draw_pixel();
+	mlx_pixel_put(fdf->mlx_ptr, fdf->win, 500, 500, 0xFFFFFF);
 	mlx_key_hook(fdf->win, close_window_ESC, fdf);
 	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	return ;
@@ -70,12 +59,9 @@ void init_window(t_fdf *fdf)
 static void check_args(int ac, char **argv)
 {
 	if (ac != 2)
-	{
-		perror("format is ./fdf map.fdf");
-		exit(0);
-	}
+		exit_w_code(1, 1, "format is: ./fdf map_name.fdf");
 	if (!argv || **argv == '\0')
-		exit(0);
+		exit_w_code(0, 1, "argv invalid");
 	return ;
 }
 

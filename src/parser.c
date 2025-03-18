@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/17 17:41:29 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:19:24 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int **read_map(char *file, t_fdf *map)
 	if (!map->maps)
 		return (NULL);
 	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	if (fd == -1)
 	{
 		free(map->maps);
 		return (NULL);

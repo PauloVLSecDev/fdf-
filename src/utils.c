@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/17 19:51:22 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:46:21 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	close_fdf(t_fdf *fdf)
 		free_map(fdf->maps, fdf->rows);
 	if (fdf->mlx_ptr)
 	{
-		//if (fdf->img)
-		//	mlx_destroy_image(fdf->mlx_ptr, fdf->img);
 		if (fdf->win)
 			mlx_destroy_window(fdf->mlx_ptr, fdf->win);
 		mlx_destroy_display(fdf->mlx_ptr);
@@ -52,14 +50,16 @@ static void	validade_file_name(char *file_name, int fd)
 	return ;
 }
 
-static int validade_cols_of_lines(int fd, int flag)
+static int	validade_cols_of_lines(int fd, int flag)
 {
 	char	*line;
 	int	cols_next_line;
 	int	previus_line;
 	
 	line = get_next_line(fd);
-	previus_line = count_cols(line);	
+	if (!line)
+		exit_w_code(fd, 3, "map is NULL");
+	previus_line = count_cols(line);
 	while (line)
 	{
 		cols_next_line = count_cols(line);
@@ -87,6 +87,6 @@ void	validade_all(char *file)
 	validade_file_name(file, fd);
 	valid = validade_cols_of_lines(fd, flag);
 	if (valid == 1)
-		exit_w_code(fd, 1, "teste");
+		exit_w_code(fd, 1, "invalid cols");
 	return ;
 }

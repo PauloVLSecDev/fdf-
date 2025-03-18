@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/18 15:30:31 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:11:09 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,24 @@ typedef struct s_fdf
 {
 	void	*mlx_ptr;
 	void	*win;
-
 	int	**maps;
 	int	rows;
 	int	cols;
 	int	max_z;
 	int	min_z;
-	
 	int	zoom;
-	float	angle_x;
-	float	angle_y;
+	float	cordenate_x;
+	float	cordenate_y;
 	float	angle_z;
+	float	angle_y;
+	float	angle_x;
 	float	z_scala;
 	int	shift_x;
 	int	shift_y;
 
 }	t_fdf;
 
-typedef struct s_img
-{
-    void	*img;
-    char	*addr;
-    int		bits_per_pixel;
-    int		line_length;
-    int		endian;
 
-}   t_img;
 
 void	exit_w_code(int fd, int code, void *msg);
 int	close_window_ESC(int keycode, t_fdf *fdf);
@@ -68,6 +60,6 @@ int	count_lines(char *file);
 void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
 void	validade_all(char *file);
-void	draw_pixel(t_img *img, int x, int y);
+void	draw(t_fdf *img);
 
 #endif
