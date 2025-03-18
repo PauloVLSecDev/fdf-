@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/17 20:43:56 by pvitor-l         ###   ########.fr       */
+/*   Created: 2025/03/17 19:27:34 by pvitor-l          #+#    #+#             */
+/*   Updated: 2025/03/17 19:52:08 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fdf.h"
+#include "../includes/fdf.h"
 
-void	draw_pixel(t_fdf *fdf)
-{
-	fdf->img = mlx_new_image(fdf->mlx_ptr, 1000, 800);
-	
-	//	mlx_pixel_put();
+void	exit_w_code(int fd, int code, void *msg)
+{	
+	if (fd == -1)
+		perror(msg);
+	ft_printf("%s\n", msg);
+	close(fd);
+	exit(code);
 }
-

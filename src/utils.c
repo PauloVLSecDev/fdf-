@@ -6,29 +6,11 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/16 18:30:31 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:51:22 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*
-void	print_map(t_fdf *map)
-{
-	int i = 0;
-	int j = 0;
-	
-	while (i < map->rows)
-	{
-		j = 0; while (j < map->cols)	{
-			printf("%d  ", map->maps[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-*/
 
 void	close_fdf(t_fdf *fdf)
 {
@@ -59,47 +41,36 @@ void	free_map(int **map, int lines)
 	free(map);
 }
 
-static void	validade_file_name(char *file_name)
+
+static void	validade_file_name(char *file_name, int fd)
 {
 	char	*point;
 
 	point = ft_strrchr(file_name, '.');
 	if (!point || ft_strncmp(point, ".fdf", ft_strlen(".fdf")) != 0)
-	{
-		perror("file_name whitout .fdf in end");
-		exit(1);
-	}
+		exit_w_code(fd, 42, "format expected: .fdf");
 	return ;
 }
 
-static int validade_cols_of_lines(int fd, char *file)
+static int validade_cols_of_lines(int fd, int flag)
 {
 	char	*line;
-	int	cols_first_line;
-	int	cols;
+	int	cols_next_line;
+	int	previus_line;
 	
 	line = get_next_line(fd);
-	if (!line)
-		return (1);
-	cols_first_line = count_cols(line);	
-	free(line);
-	close(fd);
-	fd = open(file, O_RDONLY);
-	while ((line = get_next_line(fd)) != NULL)
+	previus_line = count_cols(line);	
+	while (line)
 	{
-		cols = count_cols(line);
-		if (cols_first_line != cols)
-		{
-			free(line);
-			close(fd);
-			return (1);
-		}
-		printf("%s", line);
+		cols_next_line = count_cols(line);
+		if (previus_line != cols_next_line)
+			flag = 1;
 		free(line);
+		line = get_next_line(fd);
+		previus_line = cols_next_line;
 	}
-	free(line);
 	close(fd);
-	return (0);
+	return (flag);
 }
 
 
@@ -107,17 +78,15 @@ void	validade_all(char *file)
 {
 	int	fd;
 	int	flag;
+	int	valid;
 
+	flag = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		perror(" ");
-		exit(1);
-	}
-	//exit_erros(fd, number);
-	validade_file_name(file);
-	flag = validade_cols_of_lines(fd, file);
-	if (flag == 1)
-		exit (1);
+		exit_w_code(fd, 1, file);
+	validade_file_name(file, fd);
+	valid = validade_cols_of_lines(fd, flag);
+	if (valid == 1)
+		exit_w_code(fd, 1, "teste");
 	return ;
 }

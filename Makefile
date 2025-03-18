@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 15:06:11 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/02/24 18:16:29 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/03/17 19:27:25 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS =	$(SRC_DIR)/main.c \
 	$(SRC_DIR)/parser.c \
 	$(SRC_DIR)/draw.c \
 	$(SRC_DIR)/utils.c \
+	$(SRC_DIR)/errors.c \
 	$(SRC_DIR)/controls.c
 	
 OBJS = $(SRCS:.c=.o)

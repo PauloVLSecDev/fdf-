@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/15 19:51:57 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:01:31 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_map(t_fdf *map)
 void init_window(t_fdf *fdf)
 {
 	
+	t_img	img;
 	fdf->mlx_ptr = mlx_init();
 	if (!fdf->mlx_ptr)
 	{
@@ -58,6 +59,7 @@ void init_window(t_fdf *fdf)
 		free(fdf->win);
 		exit(1);
 	}
+	img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	mlx_key_hook(fdf->win, close_window_ESC, fdf);
 	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	return ;

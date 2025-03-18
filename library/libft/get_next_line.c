@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:38:05 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/16 18:40:34 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:49:56 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ char	*get_next_line(int fd)
 	new_line = extract_line(&buffer);
 	if (buffer && buffer[0] == '\0')
 	{
-		free(new_line);
 		free(buffer);
 		buffer = NULL;
 	}
