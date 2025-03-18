@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/17 20:59:56 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:30:31 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int	count_lines(char *file);
 void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
 void	validade_all(char *file);
+void	draw_pixel(t_img *img, int x, int y);
 
 #endif
