@@ -1,12 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
+/*   fdf.h                                              :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/18 19:11:09 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:05:06 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +23,22 @@
 #include <stdio.h>
 #include <math.h>
 
+
+typedef struct s_image
+{
+    void    *img;
+    char    *addr;\
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}           t_image;
+
 typedef struct s_fdf
 {
 	void	*mlx_ptr;
 	void	*win;
 	int	**maps;
+	t_image	img;
 	int	rows;
 	int	cols;
 	int	max_z;
@@ -45,8 +55,7 @@ typedef struct s_fdf
 
 }	t_fdf;
 
-
-
+void	put_pixel_to_image(t_image *img, int x, int y, int color);
 void	exit_w_code(int fd, int code, void *msg);
 int	close_window_ESC(int keycode, t_fdf *fdf);
 int	close_window_X(t_fdf *fdf);
@@ -61,5 +70,6 @@ void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
 void	validade_all(char *file);
 void	draw(t_fdf *img);
+void	create_img(t_fdf *fdf);
 
 #endif

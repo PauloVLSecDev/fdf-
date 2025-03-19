@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/18 18:19:24 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:40:30 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int **read_map(char *file, t_fdf *map)
 		i++;
 		free(line);
 	}
-	//	print_map(map);
 	close(fd);
 	return (map->maps);
 }

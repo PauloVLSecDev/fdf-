@@ -1,18 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*   main.c                                             :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */ /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/18 18:49:04 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:43:16 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_fdf *init_fdf(char *file)
+t_fdf	*init_fdf(char *file)
 {
 	t_fdf	*fdf;
 
@@ -50,7 +47,8 @@ void init_window(t_fdf *fdf)
 	fdf->win = mlx_new_window(fdf->mlx_ptr, WIDTH, HEIGHT, "FDF");
 	if (!fdf->win)
 		exit(1);
-	mlx_pixel_put(fdf->mlx_ptr, fdf->win, 500, 500, 0xFFFFFF);
+	create_img(fdf);
+	put_pixel_to_image(&fdf->img, 500, 600, 0xFFFFFF);
 	mlx_key_hook(fdf->win, close_window_ESC, fdf);
 	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	return ;
