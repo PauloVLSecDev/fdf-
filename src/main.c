@@ -48,9 +48,6 @@ void init_window(t_fdf *fdf)
 	if (!fdf->win)
 		exit(1);
 	create_img(fdf);
-	put_pixel_to_image(&fdf->img, 500, 600, 0xFFFFFF);
-	mlx_key_hook(fdf->win, close_window_ESC, fdf);
-	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	return ;
 }
 
@@ -69,6 +66,17 @@ int 	main (int argc, char **argv)
 	check_args(argc, argv);
 	validade_all(argv[1]);
 	fdf = init_fdf(argv[1]);
+	put_pixel_to_image(&fdf->img, 601, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 602, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 603, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 604, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 605, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 606, 600, 0xFFFFFF);
+	put_pixel_to_image(&fdf->img, 607, 600, 0xFFFFFF);
+
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win, fdf->img.img, 0, 0);
+	mlx_key_hook(fdf->win, close_window_ESC, fdf);
+	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
 	mlx_loop(fdf->mlx_ptr);
 	return (0);
 }

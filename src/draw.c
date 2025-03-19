@@ -6,11 +6,12 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 16:14:17 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:03:09 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
 
 void	create_img(t_fdf *fdf)
 {
@@ -27,6 +28,7 @@ void	put_pixel_to_image(t_image *img, int x, int y, int color)
 	*(unsigned int*)pixel = color;
 }
 
+/*
 void	draw(t_fdf *fdf)
 {
 	int	y;
@@ -51,5 +53,6 @@ void	draw(t_fdf *fdf)
 		}
 	}
 	return ;
-}
+k
+*/
 

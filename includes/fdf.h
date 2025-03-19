@@ -12,8 +12,8 @@
 #ifndef FDF_H
 #define FDF_H 
 
-# define WIDTH  1000
-# define HEIGHT  800
+# define WIDTH  1920
+# define HEIGHT  1080
 # define ESC 0xff1b
 
 #include "../library/libft/libft.h"
