@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 15:40:30 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:29:20 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int **read_map(char *file, t_fdf *map)
+int **read_map(char *file, t_fdf *fdf)
 {
 	int		i;
 	int		fd;
 	char		*line;
 
-	map->rows = count_lines(file);
-	if (map->rows <= 0)
+	fdf->rows = count_lines(file);
+	if (fdf->rows <= 0)
 		return (NULL);
-	map->maps = malloc(sizeof(int *) * map->rows);
-	if (!map->maps)
+	fdf->maps = malloc(sizeof(int *) * fdf->rows);
+	if (!fdf->maps)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		free(map->maps);
+		free(fdf->maps);
 		return (NULL);
 	}
 	i = 0;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		map->maps[i] = convert_line_to_int(line, map);
+		fdf->maps[i] = convert_line_to_int(line, fdf);
 		i++;
 		free(line);
 	}
 	close(fd);
-	return (map->maps);
+	return (fdf->maps);
 }
 int	count_lines(char *file)
 {

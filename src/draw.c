@@ -6,17 +6,51 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 21:01:48 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:14:01 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
+void	draw_H(t_fdf *fdf, t_point start, t_point end, int color)
+{
+	t_point temp;
+	if (start.x > end.x)
+	{
+		temp = start;
+		start = end;
+		end = temp;
+	}
+	while (start.x <= end.x)
+	{
+		put_pixel_to_image(&fdf->img, start.x, start.y, color);
+		start.x++;
+	}
+}
+
+/*
+void	draw_V(t_fdf *fdf, t_point start, t_point end, int color)
+{
+	t_point temp;
+	if (start.x > end.x)
+	{
+		temp = start;
+		start = end;
+		end = temp;
+	}
+	while (start.y <= end.y)
+	{
+		put_pixel_to_image(&fdf->img, start.x, start.y, color);
+		start.x++;
+	}
+}
+*/
 
 void	create_img(t_fdf *fdf)
 {
 	fdf->img.img = mlx_new_image(fdf->mlx_ptr, WIDTH, HEIGHT);
-	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.img, 
+	&fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
 	return ;
 }
 
@@ -27,26 +61,28 @@ void	put_pixel_to_image(t_image *img, int x, int y, int color)
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)pixel = color;
 }
-void	draw_line(t_fdf *fdf)
+void	draw_grid(t_fdf *fdf)
 {
-	int	i;
-	int	j;
-	int	spacing;
+	int	x;
+	int	y;
 
-	spacing = 50;
+	t_point start;
+	t_point end;
 
-	i = 0;
-	while (i < fdf->rows)
+	y = 0;
+	while (y < fdf->rows)
 	{
-		j = 0;
-		while (j < fdf->cols)
+		x = 0;
+		while (x < fdf->cols)
 		{
-			fdf->x0 = j * spacing + fdf->shift_x;
-			fdf->y0 = i * spacing + fdf->shift_y;
-			put_pixel_to_image(&fdf->img, fdf->x0, fdf->y0, 0xFFFFFF);
-			j++;
+			start = init_s_points(x, y, fdf->maps[y][x]);
+			end = init_s_points(x, y, fdf->maps[y][x + 1]);
+			draw_H(fdf, start, end, 0xFFFFFF);
+		//	end = init_s_points(x, y, fdf->maps[y + 1][x]);
+		//	draw_V(fdf, start, end, 0xFFFFFF);
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return ;
 }

@@ -15,7 +15,6 @@
 # define WIDTH  1620
 # define HEIGHT  960
 # define ESC 0xff1b
-
 #include "../library/libft/libft.h"
 #include "../library/minilibx-linux/mlx.h"
 #include <stdlib.h>
@@ -23,6 +22,12 @@
 #include <stdio.h>
 #include <math.h>
 
+typedef struct s_point
+{
+    int	x;
+    int	y;
+    int	z;
+}	t_point;
 
 typedef struct s_image
 {
@@ -71,7 +76,9 @@ int	count_lines(char *file);
 void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
 void	validade_all(char *file);
-void	draw_line(t_fdf *img);
+void	draw_grid(t_fdf *img);
 void	create_img(t_fdf *fdf);
+void	draw_H(t_fdf *fdf, t_point p0, t_point p1, int color);
+t_point	init_s_points(int x, int y, int z);
 
 #endif

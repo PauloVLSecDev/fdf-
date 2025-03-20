@@ -66,7 +66,7 @@ int 	main (int argc, char **argv)
 	check_args(argc, argv);
 	validade_all(argv[1]);
 	fdf = init_fdf(argv[1]);
-	draw_line(fdf);
+	draw_grid(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win, fdf->img.img, 0, 0);
 	mlx_key_hook(fdf->win, close_window_ESC, fdf);
 	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);

@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 15:06:11 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/03/17 19:27:25 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/03/20 16:36:13 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,11 @@ MLX_LIB = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 LIBFT_LIB = -L$(LIB_DIR) -lft
 
 SRCS =	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/parser.c \
+	$(SRC_DIR)/read_file.c \
 	$(SRC_DIR)/draw.c \
 	$(SRC_DIR)/utils.c \
 	$(SRC_DIR)/errors.c \
+	$(SRC_DIR)/init_points.c \
 	$(SRC_DIR)/controls.c
 	
 OBJS = $(SRCS:.c=.o)
