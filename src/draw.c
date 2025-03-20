@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 17:03:09 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/19 21:01:48 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,49 @@ void	put_pixel_to_image(t_image *img, int x, int y, int color)
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)pixel = color;
 }
-
-/*
-void	draw(t_fdf *fdf)
+void	draw_line(t_fdf *fdf)
 {
-	int	y;
-	int	x;
+	int	i;
+	int	j;
+	int	spacing;
 
-	y = 0;
-	while (fdf->rows > y)
+	spacing = 50;
+
+	i = 0;
+	while (i < fdf->rows)
 	{
-		x = 0;
-		while (fdf->cols > x)	
+		j = 0;
+		while (j < fdf->cols)
 		{
-			if ( x < fdf->cols - 1)
-			{
-				fdf->cordenate_y = y;
-				fdf->cordenate_x = x + 1;
-			}
-			if ( y < fdf->rows - 1)
-			{
-				fdf->cordenate_y = y + 1;
-				fdf->cordenate_x = x;
-			}
+			fdf->x0 = j * spacing + fdf->shift_x;
+			fdf->y0 = i * spacing + fdf->shift_y;
+			put_pixel_to_image(&fdf->img, fdf->x0, fdf->y0, 0xFFFFFF);
+			j++;
 		}
+		i++;
 	}
 	return ;
-k
-*/
+}
 
+/*
+void	draw_braseham(t_fdf *fdf)
+{
+	int	dy;
+	int	dx;
+	int	i;
+	int	y;
+
+	i = 0;
+	dx = fdf->maps[1][1] - fdf->maps[1][0];
+	dy = fdf->maps[1] - fdf->maps[0];
+	
+	while (i < fdf->cols > (dx + 1))
+	{
+		y = 1;
+		//put_pixel_to_image(&fdf->img, fdf->maps[1][i++], *fdf->maps[1], 0xFFFFFF);
+		put_pixel_to_image(&fdf->img, i, y, 0xFFFFFF);
+	}
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win, fdf->img.img, 0, 0);
+	return ;
+}
+*/

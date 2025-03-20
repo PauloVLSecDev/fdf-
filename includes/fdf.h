@@ -12,8 +12,8 @@
 #ifndef FDF_H
 #define FDF_H 
 
-# define WIDTH  1920
-# define HEIGHT  1080
+# define WIDTH  1620
+# define HEIGHT  960
 # define ESC 0xff1b
 
 #include "../library/libft/libft.h"
@@ -41,8 +41,10 @@ typedef struct s_fdf
 	t_image	img;
 	int	rows;
 	int	cols;
-	int	max_z;
-	int	min_z;
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
 	int	zoom;
 	float	cordenate_x;
 	float	cordenate_y;
@@ -69,7 +71,7 @@ int	count_lines(char *file);
 void	free_map(int **map, int lines);
 void	close_fdf(t_fdf *fdf);
 void	validade_all(char *file);
-void	draw(t_fdf *img);
+void	draw_line(t_fdf *img);
 void	create_img(t_fdf *fdf);
 
 #endif
