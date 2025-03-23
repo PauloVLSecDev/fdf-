@@ -112,7 +112,7 @@ void	draw_grid(t_fdf *fdf)
 	y = -1;
 	while (y < fdf->rows)
 	{
-        x = -1;
+        x = 0;
 		while (x < fdf->cols -1)
 		{
 			if (x < fdf->cols -1)
