@@ -1,7 +1,8 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */ /*                                                    +:+ +:+         +:+     */
+/*   fdf.h                                              :+:      :+:    :+:   */ 
+/*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
@@ -12,8 +13,8 @@
 #ifndef FDF_H
 #define FDF_H 
 
-# define WIDTH  1620
-# define HEIGHT  960
+# define WIDTH   600
+# define HEIGHT  400
 # define ESC 0xff1b
 #include "../library/libft/libft.h"
 #include "../library/minilibx-linux/mlx.h"
@@ -24,41 +25,37 @@
 
 typedef struct s_point
 {
-    int	x;
-    int	y;
-    int	z;
-}	t_point;
+    int		x;
+    int		y;
+    int		z;
+}		t_point;
 
 typedef struct s_image
 {
-    void    *img;
-    char    *addr;\
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-}           t_image;
+	void	*img;
+	char	*addr;\
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_image;
 
 typedef struct s_fdf
 {
 	void	*mlx_ptr;
 	void	*win;
-	int	**maps;
+	int		**maps;
 	t_image	img;
-	int	rows;
-	int	cols;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int	zoom;
-	float	cordenate_x;
-	float	cordenate_y;
+	int		dx;
+	int		dy;
+	int		rows;
+	int		cols;
+	int		zoom;
 	float	angle_z;
 	float	angle_y;
 	float	angle_x;
 	float	z_scala;
-	int	shift_x;
-	int	shift_y;
+	int		shift_x;
+	int		shift_y;
 
 }	t_fdf;
 

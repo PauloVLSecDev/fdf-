@@ -12,7 +12,7 @@
 
 NAME = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -lm
 
 DIR_LIBS = library
 MLX_DIR = library/minilibx-linux/
