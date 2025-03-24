@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */ 
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 16:05:06 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/24 20:05:34 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 #define FDF_H 
-
-# define WIDTH   600
-# define HEIGHT  400
+# define WIDTH   1920
+# define HEIGHT  900
 # define ESC 0xff1b
 #include "../library/libft/libft.h"
 #include "../library/minilibx-linux/mlx.h"
@@ -50,8 +49,10 @@ typedef struct s_fdf
 	int		rows;
 	int		cols;
 	int		zoom;
-	float	angle_z;
-	float	angle_y;
+	int		steps;
+	int		max_z;
+	float	isoset_x;
+	float	isoset_y;
 	float	angle_x;
 	float	z_scala;
 	int		shift_x;
@@ -76,6 +77,6 @@ void	validade_all(char *file);
 void	draw_grid(t_fdf *img);
 void	create_img(t_fdf *fdf);
 void	draw_H(t_fdf *fdf, t_point p0, t_point p1, int color);
-t_point	init_s_points(int x, int y, int z);
-
+t_point	init_s_points(int x, int y, int z, t_fdf *fdf);
+void	set_isos(t_fdf *fdf);
 #endif

@@ -6,13 +6,13 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 15:06:11 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/03/20 16:36:13 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/03/24 19:32:40 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -lm
+CFLAGS = -Wall -Wextra -Werror -g
 
 DIR_LIBS = library
 MLX_DIR = library/minilibx-linux/
@@ -30,6 +30,7 @@ SRCS =	$(SRC_DIR)/main.c \
 	$(SRC_DIR)/utils.c \
 	$(SRC_DIR)/errors.c \
 	$(SRC_DIR)/init_points.c \
+	$(SRC_DIR)/isometric.c \
 	$(SRC_DIR)/controls.c
 	
 OBJS = $(SRCS:.c=.o)

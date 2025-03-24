@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/20 17:14:01 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/24 15:31:59 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,21 +109,21 @@ void	draw_grid(t_fdf *fdf)
 	int	x;
 	int	y;
 
-	y = -1;
+	y = 0;
 	while (y < fdf->rows)
 	{
         x = 0;
-		while (x < fdf->cols -1)
+		while (x < fdf->cols)
 		{
 			if (x < fdf->cols -1)
 			{
-				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x]),
-				init_s_points(x + 1, y, fdf->maps[y][x + 1]), 0xFFFFFF);
+				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x], fdf),
+				init_s_points(x + 1, y, fdf->maps[y][x + 1], fdf), 0xFFFFFF);
 			}
 			if (y < fdf->rows -1)
 			{
-				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x]),
-				init_s_points(x, y + 1, fdf->maps[y + 1][x]), 0xFFFFFF);
+				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x], fdf),
+				init_s_points(x, y + 1, fdf->maps[y + 1][x], fdf), 0xFFFFFF);
 			}
 			x++;
 		}

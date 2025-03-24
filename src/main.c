@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ 
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 15:43:16 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:28:26 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ t_fdf	*init_fdf(char *file)
 
 void	init_map(t_fdf *map)
 {
-	map->angle_x = 0;
-	map->angle_y = 0;
-	map->angle_z = 0;
+	map->steps = 20;
 	map->rows = 0;
 	map->cols = 0;
 	map->zoom = 20;
+	map->isoset_x = 0;
+	map->isoset_y = 0;
 	map->shift_x = 20;
 	map->shift_y = 20;
 	map->maps = NULL;
