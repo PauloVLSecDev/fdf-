@@ -6,10 +6,9 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ 
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/24 16:28:26 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:49:36 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/fdf.h"
 
 t_fdf	*init_fdf(char *file)
@@ -30,7 +29,7 @@ t_fdf	*init_fdf(char *file)
 
 void	init_map(t_fdf *map)
 {
-	map->steps = 20;
+	map->z_scale = 0.1;
 	map->rows = 0;
 	map->cols = 0;
 	map->zoom = 20;
@@ -69,6 +68,7 @@ int 	main (int argc, char **argv)
 	check_args(argc, argv);
 	validade_all(argv[1]);
 	fdf = init_fdf(argv[1]);
+	calculate_steps(fdf); 
 	draw_grid(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win, fdf->img.img, 0, 0);
 	mlx_key_hook(fdf->win, close_window_ESC, fdf);

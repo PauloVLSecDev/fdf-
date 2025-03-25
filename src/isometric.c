@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:51:52 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/24 20:23:25 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:41:27 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,17 @@ void	set_isos(t_fdf *fdf)
 {
 	float pespective_x;
 	float pespective_y;
+	float center_x;
+	float center_y;
 
 	is_max_z(fdf);
-	pespective_x = (fdf->rows + fdf->cols)* fdf->steps * cos(M_PI / 6);
-	pespective_y= (fdf->rows + fdf->cols) * fdf->steps * sin(M_PI / 6)
-	- fdf->max_z * fdf->steps;
+	center_x = (fdf->cols - 1) / 2.0f;
+	center_y = (fdf->rows - 1) / 2.0f;
+	pespective_x = (center_x - center_y) * fdf->steps * cos(M_PI / 6);
+	pespective_y= (center_x + center_y) * fdf->steps * sin(M_PI / 6);
 	
-	fdf->isoset_x = (WIDTH - pespective_x) / 2;
-	fdf->isoset_y = (HEIGHT - pespective_y) / 2;
+	fdf->isoset_x = (WIDTH / 2) -  pespective_x;
+	fdf->isoset_y = (HEIGHT / 2) - pespective_y;
 
 	return ;
 }

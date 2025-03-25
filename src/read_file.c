@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/24 16:53:53 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:22:42 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int **read_map(char *file, t_fdf *fdf)
 	fdf->rows = count_lines(file);
 	if (fdf->rows <= 0)
 		return (NULL);
-	fdf->maps = malloc(sizeof(int *) * fdf->rows);
+	fdf->maps = (int **)malloc(sizeof(int *) * fdf->rows);
 	if (!fdf->maps)
 		return (NULL);
 	fd = open(file, O_RDONLY);

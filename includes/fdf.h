@@ -6,14 +6,14 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/24 20:05:34 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:59:02 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 #define FDF_H 
-# define WIDTH   1920
-# define HEIGHT  900
+# define WIDTH   1620
+# define HEIGHT  800
 # define ESC 0xff1b
 #include "../library/libft/libft.h"
 #include "../library/minilibx-linux/mlx.h"
@@ -44,8 +44,6 @@ typedef struct s_fdf
 	void	*win;
 	int		**maps;
 	t_image	img;
-	int		dx;
-	int		dy;
 	int		rows;
 	int		cols;
 	int		zoom;
@@ -54,7 +52,7 @@ typedef struct s_fdf
 	float	isoset_x;
 	float	isoset_y;
 	float	angle_x;
-	float	z_scala;
+	float	z_scale;
 	int		shift_x;
 	int		shift_y;
 
@@ -79,4 +77,5 @@ void	create_img(t_fdf *fdf);
 void	draw_H(t_fdf *fdf, t_point p0, t_point p1, int color);
 t_point	init_s_points(int x, int y, int z, t_fdf *fdf);
 void	set_isos(t_fdf *fdf);
+void calculate_steps(t_fdf *fdf);
 #endif
