@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:39:39 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/26 20:50:32 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:02:56 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ t_point	init_s_points(int x, int y, int z, t_fdf *fdf)
 	float	iso_y;
 	float	normalize_z;
 	t_point p;
+	
+	printf("Ponto original: x=%d, y=%d, z=%d\n", x, y, z);
+	printf("Ponto isométrico: x=%d, y=%d\n", p.x, p.y);
 
 	z = fmax(fdf->min_z, fmin(z, fdf->max_z));
 	normalize_z = (float)(z - fdf->min_z) / fmax(1, fdf->max_z - fdf->min_z);
+	printf("z normazinado %f\n", normalize_z);
 	set_isos(fdf);
 	iso_x = (x - y) * fdf->zoom * cos(M_PI / 6);
 	iso_y = (x + y) * fdf->zoom * sin(M_PI / 6) - (normalize_z * fdf->z_scale * 0.5);
@@ -45,5 +49,4 @@ void	calculate_steps(t_fdf *fdf)
 	scale_y = (HEIGHT * margin) / (fdf->cols + fdf->rows) / sin(M_PI / 6) + fdf->z_range;
 
 	fdf->zoom = fmin(scale_x, scale_y);
-	fdf->z_scale = fmin(fdf->z_scale, HEIGHT * 0.5f);
-}
+	fdf->z_scale = fmin(fdf->z_scale, HEIGHT * 0.5f);}

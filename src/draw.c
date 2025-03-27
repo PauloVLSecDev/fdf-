@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/26 20:59:48 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:20:18 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	create_img(t_fdf *fdf)
 void	put_pixel_to_image(t_image *img, int x, int y, int color)
 {
 	char *pixel;
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+	if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT)
 		return ;
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)pixel = color;
@@ -43,7 +43,7 @@ static void	draw_smaller45(t_fdf *fdf, t_point p0, t_point p1, int color)
 		d[1] = -d[1];
 	}
 	d[2] = 2 * d[1] - d[0];
-	while (p0.x <= p1.x)
+	while (p0.x < p1.x)
 	{
 		put_pixel_to_image(&fdf->img, p0.x, p0.y, color);
 		if (d[2] > 0)
@@ -71,7 +71,7 @@ static void	draw_bigger45(t_fdf *fdf, t_point p0, t_point p1, int color)
 		d[0] = -d[0];
 	}
 	d[2] = 2 * d[0] - d[1];
-	while (p0.y <= p1.y)
+	while (p0.y < p1.y)
 	{
 		put_pixel_to_image(&fdf->img, p0.x, p0.y, color);
 		if (d[2] > 0)
