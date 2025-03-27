@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 19:58:20 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/25 18:30:04 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:59:48 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,12 @@ void	create_img(t_fdf *fdf)
 void	put_pixel_to_image(t_image *img, int x, int y, int color)
 {
 	char *pixel;
-
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
+		return ;
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)pixel = color;
 }
-/*
-static void	draw_smaller45(t_fdf *fdf, t_point p0, t_point p1, int color)
-{
-	int	d;
-	int	yi;
-	int	dnY;
 
-	yi = 1;
-	dnY = (p1.y - p0.y);
-	if (dnY < 0)
-	{
-		yi = -1;
-		dnY = -(p1.y - p0.y);
-	}
-  	d = 2 * dnY - (p1.x - p0.x);
-	while (p0.x <= p1.x)
-	{
-		put_pixel_to_image(&fdf->img, p0.x, p0.y, color);
-		if (d > 0)
-		{
-			p0.y += yi;
-			d += 2 * dnY - (p1.x - p0.x);
-		}
-		else 
-			d += 2 * dnY;
-		p0.x++;
-	}
-	return ;
-}
-*/
 static void	draw_smaller45(t_fdf *fdf, t_point p0, t_point p1, int color)
 {
 	int	d[3];
@@ -113,37 +85,6 @@ static void	draw_bigger45(t_fdf *fdf, t_point p0, t_point p1, int color)
 	}
 }
 
-/*
-static void	draw_bigger45(t_fdf *fdf, t_point p0, t_point p1, int color)
-{
-	int	d;
-	int	xi;
-	int	dnX;	
-
-	xi = 1;
-	dnX = (p1.x - p0.x);
-	if (dnX < 0)
-	{
-		xi = -1;
-		dnX = -(p1.x - p0.x);
-	}
-	d = 2 * dnX - (p1.y - p0.y);
-	while (p0.y <= p1.y)
-	{
-		put_pixel_to_image(&fdf->img, p0.x, p0.y, color);
-		if (d > 0)
-		{
-			p0.x += xi;
-			d += 2 * dnX - (p1.y - p0.y);
-		}
-		else
-			d += 2 * dnX;
-		p0.y++;
-	}
-	return ;
-}
-
-*/
 static void	draw_bresenham(t_fdf *fdf, t_point p0, t_point p1, int color)
 {
 	if (abs(p1.y - p0.y) < abs(p1.x - p0.x))
@@ -160,6 +101,7 @@ static void	draw_bresenham(t_fdf *fdf, t_point p0, t_point p1, int color)
 		else
 			draw_bigger45(fdf, p0, p1, color);
 	}
+	return ;
 }
 
 void	draw_grid(t_fdf *fdf)
@@ -170,7 +112,7 @@ void	draw_grid(t_fdf *fdf)
 	y = 0;
 	while (y < fdf->rows)
 	{
-        x = 0;
+		x = 0;
 		while (x < fdf->cols)
 		{
 			if (x < fdf->cols -1)

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/25 17:59:02 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:13:16 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,13 @@ typedef struct s_fdf
 	int		rows;
 	int		cols;
 	int		zoom;
-	int		steps;
 	int		max_z;
+	int		min_z;
 	float	isoset_x;
 	float	isoset_y;
 	float	angle_x;
 	float	z_scale;
+	float	z_range;
 	int		shift_x;
 	int		shift_y;
 
@@ -77,5 +78,8 @@ void	create_img(t_fdf *fdf);
 void	draw_H(t_fdf *fdf, t_point p0, t_point p1, int color);
 t_point	init_s_points(int x, int y, int z, t_fdf *fdf);
 void	set_isos(t_fdf *fdf);
-void calculate_steps(t_fdf *fdf);
+void	calculate_steps(t_fdf *fdf);
+void	is_range_z(t_fdf *fdf);
+
+
 #endif
