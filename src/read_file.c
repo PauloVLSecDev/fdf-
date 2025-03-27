@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/27 14:57:04 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:51:29 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,20 @@ int	count_lines(char *file)
 }
 int	count_cols(char *line)
 {
-	int i;
-	char **split_line;
-	int cols;
+	int	i;
+	char	**split_line;
+	int	cols;
 
 	split_line = ft_split(line, ' ');
-	i = 0;
 	cols = 0;
+	i = 0;
 	if (!split_line)
 		return (0);
 	while (split_line[i])
 	{
-		cols++;
+		printf("colunas %i\n", cols);
 		i++;
+		cols++;
 	}
 	free_array(split_line);
 	return (cols);

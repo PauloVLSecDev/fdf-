@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ 
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/26 21:00:19 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:11:33 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/fdf.h"
@@ -31,8 +31,6 @@ void	init_map(t_fdf *map)
 {
 	map->z_scale = 50; 
 	map->zoom = 10; 
-	map->rows = 0;
-	map->cols = 0;
 	map->zoom = 20;
 	map->isoset_x = 0;
 	map->isoset_y = 0;
