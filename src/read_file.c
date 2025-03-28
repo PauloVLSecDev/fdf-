@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/27 17:51:29 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 20:04:21 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,13 @@ int	count_cols(char *line)
 		return (0);
 	while (split_line[i])
 	{
-		printf("colunas %i\n", cols);
-		i++;
+		if(split_line[i][0] == '\n' && !split_line[i + 1])
+		{
+			i++;
+			continue ;
+		}
 		cols++;
+		i++;
 	}
 	free_array(split_line);
 	return (cols);

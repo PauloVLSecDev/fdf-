@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ 
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/27 18:11:33 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:00:42 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/fdf.h"
@@ -16,8 +16,7 @@ t_fdf	*init_fdf(char *file)
 	t_fdf	*fdf;
 
 	fdf = malloc(sizeof(t_fdf));
-	if (fdf == NULL)
-	{
+	if (fdf == NULL) {
 		free(fdf);
 		exit(1);
 	}
@@ -29,9 +28,8 @@ t_fdf	*init_fdf(char *file)
 
 void	init_map(t_fdf *map)
 {
-	map->z_scale = 50; 
-	map->zoom = 10; 
-	map->zoom = 20;
+	map->z_scale = 700; 
+	map->zoom = 1; 
 	map->isoset_x = 0;
 	map->isoset_y = 0;
 	map->shift_x = 20;
