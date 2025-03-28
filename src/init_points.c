@@ -6,13 +6,21 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:39:39 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:01:42 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:41:48 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-t_point	init_s_points(int x, int y, int z, t_fdf *fdf)
+void	create_img(t_fdf *fdf)
+{
+	fdf->img.img = mlx_new_image(fdf->mlx_ptr, WIDTH, HEIGHT);
+		fdf->img.addr = mlx_get_data_addr(fdf->img.img,
+			&fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
+	return ;
+}
+
+t_point	init_p(int x, int y, int z, t_fdf *fdf)
 {
 	float	iso_x;
 	float	iso_y;

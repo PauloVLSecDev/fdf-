@@ -2,13 +2,14 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */ 
-/*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */ 
+/*                                                    +:+ +:+         +:+     */
+/*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:07:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 15:53:05 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:38:31 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
 t_fdf	*init_fdf(char *file)
@@ -16,7 +17,8 @@ t_fdf	*init_fdf(char *file)
 	t_fdf	*fdf;
 
 	fdf = malloc(sizeof(t_fdf));
-	if (fdf == NULL) {
+	if (fdf == NULL)
+	{
 		free(fdf);
 		exit(1);
 	}
@@ -28,8 +30,8 @@ t_fdf	*init_fdf(char *file)
 
 void	init_map(t_fdf *map)
 {
-	map->z_scale = 250; 
-	map->zoom = 1; 
+	map->z_scale = 250;
+	map->zoom = 1;
 	map->isoset_x = 0;
 	map->isoset_y = 0;
 	map->shift_x = 20;
@@ -38,7 +40,7 @@ void	init_map(t_fdf *map)
 	return ;
 }
 
-void init_window(t_fdf *fdf)
+void	init_window(t_fdf *fdf)
 {
 	fdf->mlx_ptr = mlx_init();
 	if (!fdf->mlx_ptr)
@@ -50,7 +52,7 @@ void init_window(t_fdf *fdf)
 	return ;
 }
 
-static void check_args(int ac, char **argv)
+static void	check_args(int ac, char **argv)
 {
 	if (ac != 2)
 		exit_w_code(1, 1, "format is: ./fdf map_name.fdf");
@@ -59,17 +61,18 @@ static void check_args(int ac, char **argv)
 	return ;
 }
 
-int 	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_fdf *fdf;
+	t_fdf	*fdf;
+
 	check_args(argc, argv);
 	validade_all(argv[1]);
 	fdf = init_fdf(argv[1]);
-	calculate_steps(fdf); 
-	draw_grid(fdf); 
+	calculate_steps(fdf);
+	draw_grid(fdf);
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win, fdf->img.img, 0, 0);
-	mlx_key_hook(fdf->win, close_window_ESC, fdf);
-	mlx_hook(fdf->win, 17, 0, close_window_X, fdf);
+	mlx_key_hook(fdf->win, close_window_esc, fdf);
+	mlx_hook(fdf->win, 17, 0, close_window_x, fdf);
 	mlx_loop(fdf->mlx_ptr);
 	return (0);
 }

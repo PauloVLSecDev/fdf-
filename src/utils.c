@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:10:50 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:36:56 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	close_fdf(t_fdf *fdf)
 {
 	if (!fdf)
-		return;
+		return ;
 	if (fdf->maps)
 		free_map(fdf->maps, fdf->rows);
 	if (fdf->mlx_ptr)

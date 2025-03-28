@@ -6,27 +6,20 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:00:27 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 14:52:42 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:39:48 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	create_img(t_fdf *fdf)
-{
-	fdf->img.img = mlx_new_image(fdf->mlx_ptr, WIDTH, HEIGHT);
-	fdf->img.addr = mlx_get_data_addr(fdf->img.img, 
-	&fdf->img.bits_per_pixel, &fdf->img.line_length, &fdf->img.endian);
-	return ;
-}
-
 void	put_pixel_to_image(t_image *img, int x, int y, int color)
 {
-	char *pixel;
+	char	*pixel;
+
 	if (x < 0 || x > WIDTH || y < 0 || y > HEIGHT)
 		return ;
 	pixel = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)pixel = color;
+	*(unsigned int *)pixel = color;
 }
 
 static void	draw_smaller45(t_fdf *fdf, t_point p0, t_point p1, int color)
@@ -117,13 +110,13 @@ void	draw_grid(t_fdf *fdf)
 		{
 			if (x < fdf->cols -1)
 			{
-				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x], fdf),
-				init_s_points(x + 1, y, fdf->maps[y][x + 1], fdf), 0x00dbff);
+				draw_bresenham(fdf, init_p(x, y, fdf->maps[y][x], fdf),
+					init_p(x + 1, y, fdf->maps[y][x + 1], fdf), 0x00dbff);
 			}
 			if (y < fdf->rows -1)
 			{
-				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x], fdf),
-				init_s_points(x, y + 1, fdf->maps[y + 1][x], fdf), 0x0058f7);
+				draw_bresenham(fdf, init_p(x, y, fdf->maps[y][x], fdf),
+					init_p(x, y + 1, fdf->maps[y + 1][x], fdf), 0x0058f7);
 			}
 			x++;
 		}
