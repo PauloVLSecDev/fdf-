@@ -38,10 +38,10 @@ void	is_range_z(t_fdf *fdf)
 
 void	set_isos(t_fdf *fdf)
 {
-	float pespective_x;
-	float pespective_y;
-	float center_x;
-	float center_y;
+	float	pespective_x;
+	float	pespective_y;
+	float	center_x;
+	float	center_y;
 
 	center_x = (fdf->cols - 1) / 2.0f;
 	center_y = (fdf->rows - 1) / 2.0f;

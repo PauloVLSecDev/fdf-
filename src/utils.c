@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:45:41 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/19 15:45:36 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:10:50 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	close_fdf(t_fdf *fdf)
 {
 	if (!fdf)
-		return ;
+		return;
 	if (fdf->maps)
 		free_map(fdf->maps, fdf->rows);
 	if (fdf->mlx_ptr)
@@ -41,7 +41,6 @@ void	free_map(int **map, int lines)
 	free(map);
 }
 
-
 static void	validade_file_name(char *file_name, int fd)
 {
 	char	*point;
@@ -55,9 +54,9 @@ static void	validade_file_name(char *file_name, int fd)
 static int	validade_cols_of_lines(int fd, int flag)
 {
 	char	*line;
-	int	cols_next_line;
-	int	previus_line;
-	
+	int		cols_next_line;
+	int		previus_line;
+
 	line = get_next_line(fd);
 	if (!line)
 		exit_w_code(fd, 3, "map is NULL");
@@ -74,7 +73,6 @@ static int	validade_cols_of_lines(int fd, int flag)
 	close(fd);
 	return (flag);
 }
-
 
 void	validade_all(char *file)
 {

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:00:27 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/27 20:39:38 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:52:42 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	draw_grid(t_fdf *fdf)
 			if (y < fdf->rows -1)
 			{
 				draw_bresenham(fdf, init_s_points(x, y, fdf->maps[y][x], fdf),
-				init_s_points(x, y + 1, fdf->maps[y + 1][x], fdf), 0x00dbff);
+				init_s_points(x, y + 1, fdf->maps[y + 1][x], fdf), 0x0058f7);
 			}
 			x++;
 		}

@@ -6,21 +6,19 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 20:39:24 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/27 20:04:21 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:46:27 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int **read_map(char *file, t_fdf *fdf)
+int	**read_map(char *file, t_fdf *fdf)
 {
 	int		i;
 	int		fd;
-	char		*line;
+	char	*line;
 
 	fdf->rows = count_lines(file);
-	if (fdf->rows <= 0)
-		return (NULL);
 	fdf->maps = (int **)malloc(sizeof(int *) * fdf->rows);
 	if (!fdf->maps)
 		return (NULL);
@@ -31,38 +29,43 @@ int **read_map(char *file, t_fdf *fdf)
 		return (NULL);
 	}
 	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		fdf->maps[i] = convert_line_to_int(line, fdf);
-		i++;
+		fdf->maps[i++] = convert_line_to_int(line, fdf);
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (fdf->maps);
 }
+
 int	count_lines(char *file)
 {
-	int	fd;
-	int	rows;
+	int		fd;
+	int		rows;
 	char	*line;
 
 	rows = 0;
 	fd = open(file, O_RDONLY);
-	if (fd < 0)
+	if (fd == -1)
 		return (0);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		free(line);
 		rows++;
+		line = get_next_line(fd);
 	}
 	close (fd);
 	return (rows);
 }
+
 int	count_cols(char *line)
 {
-	int	i;
+	int		i;
 	char	**split_line;
-	int	cols;
+	int		cols;
 
 	split_line = ft_split(line, ' ');
 	cols = 0;
@@ -71,7 +74,7 @@ int	count_cols(char *line)
 		return (0);
 	while (split_line[i])
 	{
-		if(split_line[i][0] == '\n' && !split_line[i + 1])
+		if (split_line[i][0] == '\n' && !split_line[i + 1])
 		{
 			i++;
 			continue ;
@@ -87,7 +90,7 @@ int	*convert_line_to_int(char *line, t_fdf *map)
 {
 	int		i;
 	int		*number;
-	char		**split_line;
+	char	**split_line;
 
 	split_line = ft_split(line, ' ');
 	if (!split_line)
