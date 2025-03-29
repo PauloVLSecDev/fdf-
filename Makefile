@@ -6,7 +6,7 @@
 #    By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 15:06:11 by pvitor-l          #+#    #+#              #
-#    Updated: 2025/03/24 19:32:40 by pvitor-l         ###   ########.fr        #
+#    Updated: 2025/03/29 13:34:38 by pvitor-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 DIR_LIBS = library
-MLX_DIR = library/minilibx-linux/
+MLX_DIR = library/.minilibx-linux/
 LIB_DIR = $(DIR_LIBS)/libft
 SRC_DIR = src
 INC_DIR = includes
