@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:39:07 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/28 18:07:01 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_fdf
 
 void	put_pixel_to_image(t_image *img, int x, int y, int color);
 void	exit_w_code(int fd, int code, void *msg);
-int		dlose_window_esc(int keycode, t_fdf *fdf);
+int		close_window_esc(int keycode, t_fdf *fdf);
 int		close_window_x(t_fdf *fdf);
 int		**read_map(char *file, t_fdf *map);
 void	init_window(t_fdf *fdf);
