@@ -13,8 +13,8 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH 1620
-# define HEIGHT 800
+# define WIDTH  900
+# define HEIGHT 700
 # define ESC 0xff1b
 
 # include "../library/libft/libft.h"
@@ -63,7 +63,7 @@ typedef struct s_fdf
 
 void	put_pixel_to_image(t_image *img, int x, int y, int color);
 void	exit_w_code(int fd, int code, void *msg);
-int		dlose_window_esc(int keycode, t_fdf *fdf);
+int		close_window_esc(int keycode, t_fdf *fdf);
 int		close_window_x(t_fdf *fdf);
 int		**read_map(char *file, t_fdf *map);
 void	init_window(t_fdf *fdf);

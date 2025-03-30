@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
 DIR_LIBS = library
-MLX_DIR = library/.minilibx-linux/
+MLX_DIR = library/minilibx-linux/
 LIB_DIR = $(DIR_LIBS)/libft
 SRC_DIR = src
 INC_DIR = includes

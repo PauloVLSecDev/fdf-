@@ -51,6 +51,6 @@ void	calculate_steps(t_fdf *fdf)
 		fdf->z_range = 1;
 	scale_x = (WIDTH * margin) / (fdf->cols + fdf->rows) / cos(M_PI / 6);
 	scale_y = (HEIGHT * margin) / (fdf->cols + fdf->rows) / sin(M_PI / 6);
-	fdf->zoom = fmin(scale_x, scale_y);
-	fdf->z_scale = fmax(fdf->z_scale, HEIGHT * 0.3f);
+	fdf->zoom = fmax(scale_x, scale_y);
+	fdf->z_scale = fmax(fdf->z_scale, HEIGHT * 0.5f);
 }
