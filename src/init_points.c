@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:39:39 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:41:48 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/30 15:14:24 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_point	init_p(int x, int y, int z, t_fdf *fdf)
 	set_isos(fdf);
 	iso_x = (x - y) * fdf->zoom * cos(M_PI / 6);
 	iso_y = (x + y) * fdf->zoom * sin(M_PI / 6)
-		- (normalize_z * fdf->z_scale * 0.5);
+		- (normalize_z * (fdf->z_scale * 0.5));
 	p.x = (iso_x + fdf->isoset_x);
 	p.y = (iso_y + fdf->isoset_y);
 	return (p);
@@ -47,10 +47,8 @@ void	calculate_steps(t_fdf *fdf)
 	margin = 0.9f;
 	is_range_z(fdf);
 	fdf->z_range = fmax(1, fdf->max_z - fdf->min_z);
-	if (fdf->z_range == 0)
-		fdf->z_range = 1;
 	scale_x = (WIDTH * margin) / (fdf->cols + fdf->rows) / cos(M_PI / 6);
 	scale_y = (HEIGHT * margin) / (fdf->cols + fdf->rows) / sin(M_PI / 6);
-	fdf->zoom = fmax(scale_x, scale_y);
-	fdf->z_scale = fmax(fdf->z_scale, HEIGHT * 0.5f);
+	fdf->zoom = fmin(scale_x, scale_y);
+	fdf->z_scale = fmin(fmax(10, HEIGHT / 8), HEIGHT / 2);
 }

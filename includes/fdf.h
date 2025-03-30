@@ -6,15 +6,15 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:45:03 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:39:07 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/30 14:43:26 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH  900
-# define HEIGHT 700
+# define WIDTH  1200
+# define HEIGHT 1000
 # define ESC 0xff1b
 
 # include "../library/libft/libft.h"

@@ -6,7 +6,7 @@
 /*   By: pvitor-l <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 18:51:52 by pvitor-l          #+#    #+#             */
-/*   Updated: 2025/03/28 16:36:29 by pvitor-l         ###   ########.fr       */
+/*   Updated: 2025/03/30 14:49:26 by pvitor-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	set_isos(t_fdf *fdf)
 	float	center_x;
 	float	center_y;
 
-	center_x = (fdf->cols - 1) / 2.0f;
-	center_y = (fdf->rows - 1) / 2.0f;
+	center_x = (fdf->cols) / 2.0f;
+	center_y = (fdf->rows) / 2.0f;
 	pespective_x = (center_x - center_y) * fdf->zoom * cos(M_PI / 6);
 	pespective_y = (center_x + center_y) * fdf->zoom * sin(M_PI / 6);
 	fdf->isoset_x = (WIDTH / 2) - pespective_x;
